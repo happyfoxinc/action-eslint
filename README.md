@@ -24,7 +24,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: actions/setup-node@v1
+      - uses: actions/setup-node@v2
         with:
           node-version: '14'
       - run: npm ci # or yarn install
@@ -32,9 +32,16 @@ jobs:
         with:
           eslintArgs: '--ignore-path .gitignore --quiet'
           extensions: 'js, jsx, ts, tsx'
+          annotations: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+
+## Security
+
+For better security it is recommended to pin actions to a full length commit SHA.
+
+Read more on [using third-party actions](https://docs.github.com/en/actions/learn-github-actions/security-hardening-for-github-actions#using-third-party-actions)
 
 ## Known Issues
 
